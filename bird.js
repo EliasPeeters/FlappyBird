@@ -24,10 +24,12 @@ function Bird() {
 		if (this.y > height) {
 			this.y = height;
 			this.velocity = 0;
+			score = 0;
 		}
 		if (this.y < 0) {
 			this.y = 0;
 			this.velocity = 0;
+			score = 0;
 		}
 	}
 }

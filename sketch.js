@@ -3,13 +3,15 @@ var pipes = [];
 var score = 0;
 var font;
 var fontSize = 40;
+var windowHeight =  window.innerHeight;
+var windowWidth =  window.innerWidth;
 
 
 function setup() {
-  createCanvas(300, 500);
+  createCanvas(windowWidth-100, 500);
   bird = new Bird();
   pipes.push(new Pipe());
-
+  strokeWeight(0);
   textSize(fontSize);
   textAlign(CENTER, CENTER);
 }
@@ -37,6 +39,9 @@ function draw() {
   	score += 1;
   	
   }
+  if (mouseIsPressed) {
+    bird.up();
+  }
 
 
 
@@ -44,7 +49,7 @@ function draw() {
 }
 
 function keyPressed() {
-	if (key == ' ') {
-		bird.up();
-	}
+  if (key == ' ') {
+    bird.up();
+  }
 }
