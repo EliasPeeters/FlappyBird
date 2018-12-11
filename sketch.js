@@ -19,15 +19,18 @@ function setup() {
 function draw() {
   background(255, 239, 189);
   //text('Test', 10, 50);
-  text(score, width/2, 50);
+
+  text(Math.ceil(score/9), width/2, 50);
 
   for (var i = 0; i < pipes.length; i++) {
   	pipes[i].show();
   	pipes[i].update();
-	if (pipes[i].hits(bird)) {
-  		console.log('Hit');
-  		score = 0;
-  	}
+    if (pipes[i].hits(bird)) {
+  	  score = 0;
+  	}  
+    if (pipes[i].scored(bird)) {
+      score += 1; 
+    }
 
   }
 
@@ -35,15 +38,8 @@ function draw() {
   bird.show();
 
   if (frameCount % 100 == 0) {
-  	pipes.push(new Pipe());
-  	score += 1;
-  	
+  	pipes.push(new Pipe());  	
   }
-  if (mouseIsPressed) {
-    bird.up();
-  }
-
-
 
 
 }
@@ -52,4 +48,8 @@ function keyPressed() {
   if (key == ' ') {
     bird.up();
   }
+}
+
+function mousePressed() {
+  bird.up();  
 }

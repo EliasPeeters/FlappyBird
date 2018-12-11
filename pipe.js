@@ -9,12 +9,19 @@ function Pipe() {
 
 	this.hits = function(bird) {
 		if (bird.y < this.top || bird.y > height - this.bottom) {
-			if (bird.x > this.x && bird.x < this.x + this.w) {
+			if (bird.x == this.x) {
 				this.highlight = true;
 				return true;	
 			}
 		}
 		return false;
+	}
+
+	this.scored = function(bird) {
+
+		if (bird.x > this.x && bird.x < this.x + this.w) {
+			return true;	
+		}	
 	}
 
 	this.show = function() {
